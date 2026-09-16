@@ -1,3 +1,9 @@
+
+// EXCEDE OS REQUISITOS:
+// Adicionei validação de entrada no menu para impedir que o programa
+// encerre com erro quando o usuário digitar letras ou números fora de 1 a 5.
+
+
 using System;
 
 class Program
@@ -19,7 +25,19 @@ class Program
 
             Console.Write("Escolha uma opção: ");
 
-            opcao = int.Parse(Console.ReadLine());
+            string entrada = Console.ReadLine();
+
+            if (!int.TryParse(entrada, out opcao))
+            {
+                Console.WriteLine("Opção inválida. Digite um número de 1 a 5.");
+                continue;
+            }
+
+            if (opcao < 1 || opcao > 5)
+            {
+                Console.WriteLine("Opção inválida. Digite um número de 1 a 5.");
+                continue;
+            }
 
             if (opcao == 1)
             {
